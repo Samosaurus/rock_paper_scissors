@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Sam's Rock Paper Scissors</title>
+</head>
+    
+
+<body>
+    <script>
+        /*Rock Paper Scissors Game Outline
+            //assignment url: https://www.theodinproject.com/courses/web-development-101/lessons/rock-paper-scissors#introduction
+
+            inputs from user and outputus are through the console
+
+            The console prompts the user to pick Rock Paper or Scissors
+                - Use prompt()
+            The user can enter: Rock, Paper, or Scissors
+                - Case insensitive (user can enter rock, Rock, ROCK, roCk)
+                - If the user enters something else, give an error
+            The computer randomly picks rock paper or scissors
+
+            if the user picks rock
+                and the computer picks rock -> Output is 'That's a tie! You both picked rock!''
+                and the computer picks paper -> Output is 'You lose! Paper beats rock!'
+                and the computer picks scissors - > Output is 'You win! Rock beats scissors!'
+
+            if the user picks scissors
+                and the computer picks scissors -> Output is 'That's a tie! You both picked scissors!''
+                and the computer picks paper -> Output is 'You win! Scissors beats paper!'
+                and the computer picks rock - > Output is 'You lose! Rock beats scissors!'
+
+            if the user picks paper
+                and the computer picks paper -> Output is 'That's a tie! You both picked paper!''
+                and the computer picks scissors -> Output is 'You lose! Scissors beats paper!'
+                and the computer picks rock - > Output is 'You win! Rock beats scissors!'
+
+            Output how many games the user has won, lost, and tied out of 5 games.
+             
+            Repeat the above until
+          
+            When 5 games have been played, 
+                If there was a tie, output 'It's a tie! We're all winners!' OR
+                if the computer or the user has more wins, output: '(Winner) wins!'
+        */
+
+        //game code Outline
+            //Loop needs to run playRound 5 times or until win conditions are met
+            //variables are
+            //i = # of games played
+            //playerWins = # of times player has won
+            //computerWins = # of times computer has won
+            //ties = # of ties
+
+        //Global constants and arrays
+        let RPS = ['rock', 'paper', 'scissors'];
+
+        //runs the prompt for the player to pick
+        function playerPlay() {
+
+            let input = prompt("Rock, Paper, or Scissors?", '');
+            const playerPick = inputTransform();
+
+            function inputTransform() {
+                if (!input) {
+                    console.log("You cancelled!");
+                    return null;
+                } 
+                const transformed = input.toLowerCase();
+                return transformed;
+                
+            }
+
+            //take input and standardizes the case output
+
+                return playerPick;
+        }
+
+        //computerPick Code
+        function computerPlay() {
+
+            let computerPick =
+                RPS[Math.floor(Math.random() * 3)];
+            return computerPick;
+
+        }
+
+        //Plays one round of RPS and outputs a emssage
+        function playRound(playerPick, computerPick) {
+
+            //if both the user and the computer pick the same thing, -> Output is 'That's a tie! You both picked (selection)!''
+            if (playerPick == computerPick) {
+
+                let result = "That's a tie! You both picked " + playerPick + "! ";
+                return result;
+            }
+
+            //If the computer wins, output 'You lose! computerPick beats playerPick!'
+            else if (
+                (playerPick == 'rock' && computerPick == 'paper') ||
+                (playerPick == 'scissors' && computerPick == 'rock') ||
+                (playerPick == 'paper' && computerPick == 'scissors')
+            ) {
+
+                let result = "You lose - " + computerPick + " beats " + playerPick + "!";
+                return result;
+            }
+
+            //If the user wins - > Output is 'You win! (playerPick) beats (conmputerSelection)!'
+            else if (
+                (playerPick == 'rock' && computerPick == 'scissors') ||
+                (playerPick == 'scissors' && computerPick == 'paper') ||
+                (playerPick == 'paper' && computerPick == 'rock')
+            ) {
+
+                let result = "You win - " + playerPick + " beats " + computerPick + "!";
+                return result;
+            }
+
+            else if (!playerPick) {
+                let alert = "You cancelled!";
+                console.log("playRound() cancelled");
+            }
+
+            //error message
+            else {
+                let result = 'Whoops! Did you pick rock, paper, or scissors?';
+                return result;
+            }
+
+        }//end playRound
+
+        //repeats playRound and reports the score until best out of 5
+
+        function game() {
+            
+            let i;
+            let wins = 0;
+            let losses = 0;
+            let ties = 0;
+            
+            //Loops game for 5 rounds unless canceleld
+            for (i = 1; i <= 5; i++) {
+
+                let playerPick = playerPlay();
+                let computerPick = computerPlay();
+
+                console.log("playerPick is: " + playerPick);
+                console.log("computerPick is: " + computerPick);
+                
+                let result = playRound(playerPick, computerPick);
+
+                if (result.includes("win")){
+                    wins++;
+                } else if (result.includes("lose")) {
+                    losses++;
+                } else if (result.includes("tie")) {
+                    ties++;
+                } else {
+                    console.log("game() something went wrong");
+                }
+
+                //outputs score after each round
+                console.log(result + " Round: " + i + "/5. Wins: " + wins + ". Losses: " + losses + ". Ties: " + ties + ".");
+
+            }
+
+            //Reports final winner after 5 rounds are played
+            console.log(finalWinner(wins, losses, ties));
+        
+        }// end of game
+
+        function finalWinner(wins, losses, ties) {
+            
+            if (wins == losses) {
+                return "We're all winners! Wins: " + wins + ". Losses: " + losses + ". Ties: " + ties + ".";
+            } else if (wins > losses) {
+                return "Winner winner chicken dinner! Winner: " + wins + ". Losses: " + losses + ". Ties: " + ties + ".";
+            } else if (wins < losses) {
+                return "Better luck next time! Winner: " + wins + ". Losses: " + losses + ". Ties: " + ties + ".";
+            } else {
+                return "Something odd happened? Winner: " + wins + ". Losses: " + losses + ". Ties: " + ties + ".";
+            }
+                        
+        }
+
+        //Tells game to run
+        game();
+
+    </script>
+</body>
+
+</html>
