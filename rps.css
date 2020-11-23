@@ -1,0 +1,120 @@
+html {
+    font-size: 10px;
+    background: url("../wp2776761-boxing-ring-wallpaper.jpg");
+    background-size: cover;
+  }
+
+body,html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+
+.main {
+    display: grid;
+    grid-template-columns: 50px auto 50px;
+    grid-template-rows: 15% 10% auto 10% 10% auto;
+    max-width: 900px;
+    margin: auto;
+    flex: 1;
+    height: 100vh;
+    align-content: center;
+    flex-direction: column;
+}
+
+.header {
+    margin: auto;
+    grid-column-start: 2;
+    grid-row-start: 2;
+    background: rgba(0, 0, 0, 0.75);
+    display: inline;
+    padding: 0.5rem;
+
+}
+
+.btns {
+    display: flex;
+    height: 20rem;
+    margin: 10px auto 10px auto;
+    flex: 1;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    grid-column-start: 2;
+    grid-row-start: 3;
+}
+
+.results {
+    grid-row-start: 4;
+}
+
+.finalResults {
+    grid-row-start: 5;
+}
+
+.results, .finalResults {
+    grid-column-start: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding: auto;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.btn {
+    border: .4rem solid black;
+    border-radius: .25rem;
+    margin: 1rem;
+    font-size: 1.5rem;
+    padding: 1rem .5rem;
+    width: 15rem;
+    height: 15rem;
+    text-align: center;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+h1 {
+    color:white;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.btn:hover {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
+}
+
+.btn:active {
+    transform: scale(1);
+    border-color: cyan    ;
+    box-shadow: 0 0 1.5rem cyan;
+  }
+
+.btn:click {
+    transform: scale(1.1);
+    border-color: #ffc600;
+    box-shadow: 0 0 1rem #ffc600;
+  }
+  
+
+#rock {
+    background: white url("../rock.png") center/100% 100%;
+}
+
+#scissors {
+    background: white url("../scissors.png") center/100% 100%;
+}
+
+#paper {
+    background: white url("../paper.png") center/100% 100%;
+}
+
+.btn {
+    background-size: 10px;
+    background-color: white;
+}
