@@ -1,6 +1,6 @@
 html {
     font-size: 10px;
-    background: url("../wp2776761-boxing-ring-wallpaper.jpg");
+    background: url("./wp2776761-boxing-ring-wallpaper.jpg");
     background-size: cover;
   }
 
@@ -103,15 +103,15 @@ h1 {
   
 
 #rock {
-    background: white url("../rock.png") center/100% 100%;
+    background: white url("./rock.png") center/100% 100%;
 }
 
 #scissors {
-    background: white url("../scissors.png") center/100% 100%;
+    background: white url("./scissors.png") center/100% 100%;
 }
 
 #paper {
-    background: white url("../paper.png") center/100% 100%;
+    background: white url("./paper.png") center/100% 100%;
 }
 
 .btn {
